@@ -1,14 +1,18 @@
 from fastapi import FastAPI
 
+from app.core.config import settings
+
 
 app = FastAPI(
-    title="FastAPI Architecture LAB",
-    version="0.1.0",
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
 )
 
 
 @app.get("/health")
 def health_check():
     return {
-        "status": "ok"
+        "status": "ok",
+        "app": settings.APP_NAME,
+        "debug": settings.DEBUG,
     }
