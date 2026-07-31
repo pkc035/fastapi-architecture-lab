@@ -4,6 +4,8 @@ from app.models.user import User
 from app.repositories.user_repository import UserRepository
 from app.schemas.user import UserCreate
 from app.core.security import hash_password
+from app.core.exceptions import ConflictException
+from app.core.errors import ErrorCode
 
 
 class UserService:
@@ -23,7 +25,10 @@ class UserService:
         )
 
         if existing:
-            raise ValueError("Email already exists.")
+            raise ConflictException(
+                ErrorCode.EMAIL_ALREADY_EXISTS,
+                "Email already exists",
+            )
 
         user = User(
             email=user_create.email,

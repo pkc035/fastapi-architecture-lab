@@ -48,3 +48,10 @@ def get_me(
 ):
 
     return current_user
+
+@router.get("/{id}")
+def get_user(
+    id:int,
+):
+
+    return service.get_user(id)

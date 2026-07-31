@@ -1,0 +1,18 @@
+from enum import Enum
+
+
+class ErrorCode(str, Enum):
+
+    # Common
+    INVALID_REQUEST = "INVALID_REQUEST"
+    INTERNAL_ERROR = "INTERNAL_ERROR"
+
+
+    # Auth
+    INVALID_TOKEN = "INVALID_TOKEN"
+    UNAUTHORIZED = "UNAUTHORIZED"
+
+
+    # User
+    USER_NOT_FOUND = "USER_NOT_FOUND"
+    EMAIL_ALREADY_EXISTS = "EMAIL_ALREADY_EXISTS"

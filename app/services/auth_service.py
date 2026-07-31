@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from app.core.security import verify_password
 from app.core.security import create_access_token
 from app.repositories.user_repository import UserRepository
+from app.core.exceptions import UnauthorizedException
+from app.core.errors import ErrorCode
 
 
 class AuthService:
@@ -28,8 +30,9 @@ class AuthService:
 
 
         if not user:
-            raise ValueError(
-                "Invalid credentials"
+            raise UnauthorizedException(
+                ErrorCode.UNAUTHORIZED,
+                "Invalid credentials",
             )
 
 
@@ -37,8 +40,9 @@ class AuthService:
             password,
             user.hashed_password,
         ):
-            raise ValueError(
-                "Invalid credentials"
+            raise UnauthorizedException(
+                ErrorCode.UNAUTHORIZED,
+                "Invalid credentials",
             )
 
 

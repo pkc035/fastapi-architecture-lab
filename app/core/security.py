@@ -13,7 +13,8 @@ pwd_context = CryptContext(
 )
 
 oauth2_scheme = OAuth2PasswordBearer(
-    tokenUrl="/api/v1/auth/login"
+    tokenUrl="/api/v1/auth/login",
+    auto_error=False,
 )
 
 
