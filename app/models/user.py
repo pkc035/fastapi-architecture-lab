@@ -25,3 +25,8 @@ class User(Base):
     username: Mapped[str] = mapped_column(
         String(50)
     )
+
+
+    hashed_password: Mapped[str] = mapped_column(
+        String(255)
+    )
