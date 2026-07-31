@@ -28,10 +28,8 @@ services:
     ports:
       - "5432:5432"
 
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: architecture_lab
+    env_file:
+      - ../env/docker.env
 
     volumes:
       - postgres_local_data:/var/lib/postgresql/data
